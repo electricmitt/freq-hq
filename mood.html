@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>FREQ. - Select Your Mood</title>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-indicator">
+            <div class="progress-step active"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+        </div>
+        <h2>How are you feeling?</h2>
+        <p class="mood-description">Select your current emotional state to begin your journey</p>
+        <div class="mood-container">
+            <div class="mood-options">
+                <button class="mood-button negative" data-mood="anxious">Anxious</button>
+                <button class="mood-button negative" data-mood="stressed">Stressed</button>
+                <button class="mood-button negative" data-mood="tired">Tired</button>
+                <button class="mood-button positive" data-mood="calm">Calm</button>
+                <button class="mood-button positive" data-mood="energetic">Energetic</button>
+                <button class="mood-button positive" data-mood="focused">Focused</button>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="next-button" onclick="window.location.href='goal.html'">Continue</button>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.mood-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove selected class from all buttons
+                document.querySelectorAll('.mood-button').forEach(btn => {
+                    btn.classList.remove('selected', 'selected-positive', 'selected-negative');
+                });
+                
+                // Add blink animation
+                this.classList.add('blink');
+                
+                // After animation, add selected class with appropriate color
+                setTimeout(() => {
+                    this.classList.remove('blink');
+                    if (this.classList.contains('negative')) {
+                        this.classList.add('selected', 'selected-negative');
+                    } else {
+                        this.classList.add('selected', 'selected-positive');
+                    }
+                }, 600); // 3 blinks * 200ms
+            });
+        });
+    </script>
+</body>
+</html> 

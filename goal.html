@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>FREQ. - Select Your Goal</title>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-indicator">
+            <div class="progress-step completed"></div>
+            <div class="progress-step active"></div>
+            <div class="progress-step"></div>
+        </div>
+        <h2>Where would you like to be?</h2>
+        <p class="mood-description">Choose your desired emotional state</p>
+        <div class="mood-container">
+            <div class="mood-options">
+                <button class="mood-button positive" data-mood="calm">Calm</button>
+                <button class="mood-button positive" data-mood="energetic">Energetic</button>
+                <button class="mood-button positive" data-mood="focused">Focused</button>
+                <button class="mood-button positive" data-mood="inspired">Inspired</button>
+                <button class="mood-button positive" data-mood="balanced">Balanced</button>
+                <button class="mood-button positive" data-mood="creative">Creative</button>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="back-button">Back</button>
+            <button class="next-button" onclick="window.location.href='experience.html'">Continue</button>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.mood-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove selected class from all buttons
+                document.querySelectorAll('.mood-button').forEach(btn => {
+                    btn.classList.remove('selected', 'selected-positive');
+                });
+                
+                // Add blink animation
+                this.classList.add('blink');
+                
+                // After animation, add selected class
+                setTimeout(() => {
+                    this.classList.remove('blink');
+                    this.classList.add('selected', 'selected-positive');
+                }, 600);
+            });
+        });
+
+        // Back button functionality
+        document.querySelector('.back-button').addEventListener('click', () => {
+            window.location.href = 'mood.html';
+        });
+    </script>
+</body>
+</html> 
