@@ -1,85 +1,112 @@
-# FREQ. - Mood-Based Music and Visual Experience
+# FREQ. - Interactive Mood-Based Music & Visual Experience
 
-FREQ. is an interactive web application that generates music and visual experiences based on your mood. It uses Riffusion for AI-powered music generation and Three.js for dynamic particle visualizations.
-
-## Prerequisites
-
-- Node.js (v14 or higher)
-- npm (Node Package Manager)
-- A Riffusion API token (get it from [Replicate](https://replicate.com))
-
-## Setup
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd freq-hq
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the root directory and add your Riffusion API token:
-```
-RIFFUSION_API_TOKEN=your_api_token_here
-```
-
-## Running the Application
-
-1. Start the server:
-```bash
-node server.js
-```
-
-2. Open your browser and navigate to:
-```
-http://localhost:3000
-```
-
-3. Follow the mood selection process:
-   - Select your current mood
-   - Choose your target mood
-   - Experience the generated music and visuals
+An immersive web application that combines AI-generated music with dynamic 3D particle visualizations, creating a unique experience based on your mood.
 
 ## Features
 
-- **Mood-Based Music Generation**: Uses Riffusion AI to generate music that matches your mood
-- **Dynamic Visual Experience**: Interactive particle system that responds to the music
-- **Smooth Transitions**: Seamless transitions between different mood states
-- **Audio Controls**: Play/pause and volume control for the generated music
+- 🎵 AI-powered music generation using Riffusion
+- 🌈 Dynamic 3D particle system with mood-based color schemes
+- 🎨 Interactive mood selection (Sad, Calm, Anxious)
+- 🔊 Smooth audio transitions with fade effects
+- 🎮 Responsive controls and intuitive user interface
 
-## Technical Details
+## Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **3D Visualization**: Three.js
-- **Music Generation**: Riffusion API
-- **Server**: Node.js with Express
+- **Frontend Framework**: Next.js 14 with TypeScript
+- **3D Graphics**: Three.js with React Three Fiber
+- **State Management**: Zustand
+- **Styling**: CSS Modules
+- **Audio Processing**: Web Audio API
+- **AI Integration**: Riffusion API
 
-## Troubleshooting
+## Prerequisites
 
-If you encounter any issues:
+- Node.js 18.x or later
+- npm 9.x or later
+- A Riffusion API token (get one at [replicate.com](https://replicate.com))
 
-1. **Music Not Playing**:
-   - Ensure your Riffusion API token is correctly set in the `.env` file
-   - Check that you have set up billing on your Replicate account
-   - Make sure you've clicked on the page to enable audio (browser requirement)
+## Getting Started
 
-2. **Visuals Not Showing**:
-   - Check your browser console for any errors
-   - Ensure your browser supports WebGL
-   - Try refreshing the page
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/freq-hq.git
+   cd freq-hq
+   ```
 
-3. **Server Issues**:
-   - Verify that port 3000 is not in use
-   - Check that all dependencies are installed
-   - Ensure Node.js is properly installed
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env.local` file in the root directory and add your Riffusion API token:
+   ```
+   RIFFUSION_API_TOKEN=your_api_token_here
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+freq-hq/
+├── src/
+│   ├── components/
+│   │   └── ParticleSystem/
+│   │       └── ParticleSystem.tsx    # 3D particle visualization
+│   │   ├── pages/
+│   │   │   ├── api/
+│   │   │   │   ├── generate-music.ts     # Music generation endpoint
+│   │   │   │   └── prediction/
+│   │   │   │   └── [id].ts           # Prediction status endpoint
+│   │   │   ├── _app.tsx                  # App wrapper
+│   │   │   ├── _document.tsx             # Custom document
+│   │   │   └── experience.tsx            # Main experience page
+│   │   ├── store/
+│   │   │   └── moodStore.ts              # Zustand store for mood state
+│   │   └── styles/
+│   │       ├── Experience.module.css     # Experience page styles
+│   │       └── globals.css               # Global styles
+│   ├── .env.local                        # Environment variables
+│   ├── next.config.js                    # Next.js configuration
+│   ├── package.json                      # Project dependencies
+│   └── tsconfig.json                     # TypeScript configuration
+```
+
+## Usage
+
+1. Click anywhere on the page to initialize audio (required by browser policies)
+2. Select a mood using the buttons at the bottom of the screen
+3. Wait for the AI to generate music matching your selected mood
+4. Use the play/pause button to control playback
+5. Enjoy the synchronized visual experience with the generated music
+
+## Development
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Riffusion](https://www.riffusion.com/) for the AI music generation
+- [Three.js](https://threejs.org/) for 3D graphics
+- [Next.js](https://nextjs.org/) for the React framework
+- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) for React Three.js integration
